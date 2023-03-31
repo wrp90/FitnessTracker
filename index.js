@@ -1,5 +1,6 @@
 const button = document.querySelector('.button');
 
+// API call function
 const APIcall = () => {
   fetch("https://wger.de/api/v2/", {
     headers: {
