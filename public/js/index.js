@@ -12,6 +12,3 @@ const APIcall = () => {
 button.addEventListener('click', () => {
   APIcall();
 });
-
-
-/// this is a test comment
