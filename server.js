@@ -19,6 +19,14 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+});
+
+app.get('/workouts', (req, res) => {
+    res.render('workouts');
+});
+
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
