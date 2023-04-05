@@ -1,5 +1,5 @@
 
-const workoutbutton = document.querySelector('.workoutbutton')
+const workoutbutton = document.querySelector('.workout-button')
 
 // API call function
 const APIcall = () => {
