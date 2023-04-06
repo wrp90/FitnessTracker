@@ -3,11 +3,35 @@ h1{
     
 }
 
-.search-bar-container{
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   width: 25%;
-   min-width: 200px;
+.search-bar-container {
+    text-align: center;
+ 
+}
+
+.search-bar {
+    display: inline-block;
+    
+}
+
+button {
+    display: inline-block;
+    background-color: #3e8dd3;
+    padding: 1px;
+    height: 35px;
+    width: 100px;
+    color: #ffffff;
+    text-align: center;
+    border: 4px double #cccccc;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgb(47, 112, 226);
+}
+
+.autocomplete-items {
+    background-color: white;
 }
