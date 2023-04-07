@@ -1,16 +1,17 @@
+body {
+    background-image: url("https://img.freepik.com/free-vector/stretching-exercises-concept-illustration_114360-8922.jpg?w=996&t=st=1680821406~exp=1680822006~hmac=0daa9c2d2500743ae0e4bb59b633a90efb047587302dd19c2efcb1f54cc2c0bf");
+}
+
 h1{
     text-align: center;
-    
 }
 
 .search-bar-container {
     text-align: center;
- 
 }
 
 .search-bar {
     display: inline-block;
-    
 }
 
 button {
@@ -34,4 +35,11 @@ button:hover {
 
 .autocomplete-items {
     background-color: white;
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
