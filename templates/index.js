@@ -1,6 +1,8 @@
 /// Global consts
 const searchButton = document.querySelector('.search-button');
 const searchInput = document.querySelector('.input');
+const cardContainer = document.querySelector('.card-container');
+
 
 /// Search Terms for the Auto Fill function for search bar
 var searchTerms = ['cardio', 'plyometrics', 'stretching', 'abdominals', 'abductors', 'adductors', 'biceps', 'calves', 'chest', 'forearms', 'glutes', 'hamstrings', 'lats', 'lower_back', 'middle_back', 'neck', 'quadriceps', 'traps', 'triceps', 'beginner', 'intermediate', 'expert',]
@@ -10,7 +12,27 @@ const handleInput = (input) => {
   console.log(input)
   fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${input}`, {
     headers: { 'X-Api-Key': '/a3wPcLBhSVR1BNq96vTjQ==oKDk6Uev3zRMZP6g'}
-  }).then((response) => response.json()).then((data) => console.log(data));
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    for (i=0; i < data.length; i++) {
+      /// Card selectors
+      const card = document.createElement('div');
+
+      card.innerHTML = `
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="name">${data[i].name}</h5>
+          <h5 class="type">${data[i].type}</h5>
+          <h5 class="difficulty">${data[i].difficulty}</h5>
+          <p class="instructions">${data[i].instructions}</p>
+        </div>
+      </div>
+      `;
+      cardContainer.append(card);
+    }
+  });
 };
 
 /// Event listener for the search button on the workout page
