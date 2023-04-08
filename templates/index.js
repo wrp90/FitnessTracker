@@ -11,7 +11,7 @@ var searchTerms = ['cardio', 'plyometrics', 'stretching', 'abdominals', 'abducto
 const handleInput = (input) => {
   console.log(input)
   fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${input}`, {
-    headers: { 'X-Api-Key': '/a3wPcLBhSVR1BNq96vTjQ==oKDk6Uev3zRMZP6g'}
+    headers: {'X-Api-Key': '/a3wPcLBhSVR1BNq96vTjQ==oKDk6Uev3zRMZP6g'}
   })
   .then((response) => response.json())
   .then((data) => {
@@ -22,7 +22,7 @@ const handleInput = (input) => {
       const cardId = `card-${i}`;
     
       card.setAttribute('id', cardId);
-    
+      const cardData = JSON.stringify(data[i]);
       card.innerHTML = `
         <div class="card">
           <div class="card-body">
@@ -34,11 +34,31 @@ const handleInput = (input) => {
             </span>
             <button onclick="readMore(${i})" id="myBtn-${i}">Read more</button>
           </div>
+          <button onclick="saveExercise(${cardData}, 1)" class="save-button">SAVE</button>
         </div>
       `;
       cardContainer.append(card);
     }
   });
+};
+
+const saveExercise = async (exercise, user_id) => {
+  const exerciseJSON= JSON.parse(exercise);
+  console.log(exerciseJSON)
+  console.log(user_id)
+  // const data = {
+  //   "name": exercise.name,
+  //   "type": exercise.type,
+  //   "difficulty": exercise.difficulty,
+  //   "instructions": exercise.instructions.substr(0, 254),
+  //   "user_id": user_id
+  // };
+  // const response = await fetch("/exercise", {
+  //   method: "POST",
+  //   body: JSON.stringify(data)
+  // });
+  // console.log(response.json())
+  // return response.json();
 };
 
 function readMore(cardIndex) {
