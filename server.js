@@ -3,6 +3,8 @@ const es6Renderer = require('express-es6-template-engine');
 const express = require('express');
 const hostname = '127.0.0.1';
 const path = require('path');
+const exercise = require('./models/exercise');
+const User = require('./models/user');
 const port = 3000;
 const app = express();
 const server = http.createServer(app);
@@ -25,6 +27,15 @@ app.get('/dashboard', (req, res) => {
 
 app.get('/workouts', (req, res) => {
     res.render('workouts');
+});
+
+app.get('/users/exercises', async (req, res) => {
+    const users = await User.findAll({
+        include: [{
+            model: exercise
+        }]
+    });
+    res.json(users);
 });
 
 server.listen(port, hostname, () => {
