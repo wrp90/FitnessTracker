@@ -16,24 +16,50 @@ const handleInput = (input) => {
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
-    for (i=0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       /// Card selectors
       const card = document.createElement('div');
-
+      const cardId = `card-${i}`;
+    
+      card.setAttribute('id', cardId);
+    
       card.innerHTML = `
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="name">${data[i].name}</h5>
-          <h5 class="type">${data[i].type}</h5>
-          <h5 class="difficulty">${data[i].difficulty}</h5>
-          <p class="instructions">${data[i].instructions}</p>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="name">${data[i].name}</h5>
+            <h5 class="type">${data[i].type}</h5>
+            <h5 class="difficulty">${data[i].difficulty}</h5>
+            <span id="dots-${i}">...</span><span id="more-${i}">
+            <p class="instructions">${data[i].instructions}</p>
+            </span>
+            <button onclick="readMore(${i})" id="myBtn-${i}">Read more</button>
+          </div>
         </div>
-      </div>
       `;
       cardContainer.append(card);
     }
   });
 };
+
+function readMore(cardIndex) {
+  var dots = document.getElementById("dots-" + cardIndex);
+  var moreText = document.getElementById("more-" + cardIndex);
+  var btnText = document.getElementById("myBtn-" + cardIndex);
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+
+
+  
 
 /// Event listener for the search button on the workout page
 searchButton.addEventListener('click', (e) => {
