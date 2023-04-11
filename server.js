@@ -50,7 +50,8 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/exercise', async (req, res) => {
-    const { name, type, difficulty, instructions, user_id } = req.body;
+    console.log(req.body.data)
+    const { name, type, difficulty, instructions, user_id } = req.body.data;
     const newExercise = await Exercise.create({
         name: name,
         type: type,
